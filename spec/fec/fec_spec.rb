@@ -10,12 +10,15 @@ module Fec
 		before(:each) do
 			@number_packets_required_for_reconstruction = 3
 			@number_packets_generated = 5
+
+			@number_packets_required_for_reconstruction.should <= @number_packets_generated
 		end
 
 		describe "fec_new" do
 			it "should create a new fec object" do
 				matrix = Fec.fec_new @number_packets_required_for_reconstruction,
 						@number_packets_generated
+				#@number_packets_generated.should be_greater_than(@number_packets_required_for_reconstruction)
 			end
 		end
 
